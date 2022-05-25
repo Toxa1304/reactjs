@@ -1,1 +1,2 @@
 Unfortunately, I got significantly stuck learning hook architecture. Combination of starting late and having the first ever experience with react ever led to unfinished task 2. I believe that with some tips and practice I would be able to nail the task. The biggest problem for me was to save received from API data outside of the fetch -> then function. I wanted to use useState, but then the programm was complaining about hook architecture.
+If this single issue would be fixed, I think my approach would be succesfull
