@@ -1,68 +1,105 @@
+import { wait } from '@testing-library/user-event/dist/utils';
 import React, { Component } from 'react';  
 import ReactTable from "react-table-6";  
+import Axios from 'axios';
 import "react-table-6/react-table.css" 
-  
-class App extends Component {  
-
+import DataFetching from './dataFetching';
  
-
-
-  render() {  
-    let planetData;
-    let url = 'https://swapi.dev/api/planets/2';
-    let name, RotationPeriod, OrbitalPeriod, diameter, climate, gravity, terrain, surfaceWater, population;
-    fetch(url)
-      .then(response => response.json())
-      .then(json =>{
-        console.log(json.name);
-        console.log(json.population)
-
-      }) 
+class App extends Component {  
+  
+  render() {   
+    const data = DataFetching();
+    //one planet for now
+    //for(let i=1; i<61; i++){
+      //let data1;
+      // let url = 'https://swapi.dev/api/planets/';
+      // let name, RotationPeriod, OrbitalPeriod, diameter, climate, gravity, terrain, surfaceWater, population;
+      // let planetData = fetch(url+'1')
+      //   .then(response => response.json())
+      //   .then(json =>{
+      //     //console.log(json.name);
+          
+      //     data1 = [{
+      //       name: json.name,
+      //       rotation_period: json.rotation_period,
+      //       orbital_period: json.orbital_period,
+      //       diameter: json.diameter_period,
+      //       climate: json.climate,
+      //       gravity: json.gravity,
+      //       terrain: json.terrain,
+      //       surface_water: json.surface_water,
+      //       population: json.population
+      //     }]
+      //     return data1;
+          
+      //   });
+        // const printPlanet = async () => {
+        //   data1 = await planetData;
+        //   return data1;
+        // };
+        //data1= printPlanet();
+        
+    //}
+    
       
 
-    
+      //console.log(data1);
     //console.log(json. );
- 
-     const data1 = [{  
-        name: 'Ayaan',  
-        age: 26,
-        sex: 'male'  
-        },{  
-         name: 'Ahana',  
-         age: 22,  
-         sex: 'male'  
-         },{  
-         name: 'Peter',  
-         age: 40 ,
-         sex: 'male'       
-         },{  
-         name: 'Virat',  
-         age: 30  ,
-         sex: 'male'  
-         },{  
-         name: 'Rohit',  
-         age: 32  ,
-         sex: 'male'  
-         },{   
-         name: 'Dhoni',  
-         age: 37  ,
-         sex: 'male'  
-         }]  
+    // data1 = [{
+    //   name: json.name,
+    //   rotation_period: json.rotation_period,
+    //   orbital_period: json.orbital_period,
+    //   diameter: json.diameter_period,
+    //   climate: json.climate,
+    //   gravity: json.gravity,
+    //   terrain: json.terrain,
+    //   surface_water: json.surface_water,
+    //   population: json.population
+    // }]
+    //  data1 = [{  
+    //     name: 'Ayaan',  
+    //     rotation_period: 26,
+    //     orbital_period: 'male'  
+    //     }]  
      const columns = [{  
        Header: 'Name',  
        accessor: 'name'  
        },{  
-       Header: 'Age',  
-       accessor: 'age'  
+       Header: 'Rotation period',  
+       accessor: 'rotation_period'  
        },{  
-        Header: 'Sex',  
-        accessor: 'sex'  
-        }]   
+        Header: 'Orbital period',  
+        accessor: 'orbital_period'  
+        },{  
+          Header: 'Diameter',  
+          accessor: 'diameter'  
+        },
+        {  
+          Header: 'Climate',  
+          accessor: 'climate'  
+        },
+        {  
+          Header: 'Gravity',  
+          accessor: 'gravity'  
+        },
+        {  
+          Header: 'Terrain',  
+          accessor: 'terrain'  
+        },
+        {  
+          Header: 'Surface water',  
+          accessor: 'surface_water'  
+        },
+        {  
+          Header: 'Population',  
+          accessor: 'population'  
+        }
+        ]   
     return (  
           
           <div>  
               <ReactTable  
-                  data={data1}  
+                  data={data}  
                   columns={columns}  
                   defaultPageSize = {6}  
                   pageSizeOptions = {[2,4, 6]}  
